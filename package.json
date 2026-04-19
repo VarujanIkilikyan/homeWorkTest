@@ -1,0 +1,23 @@
+{
+  "name": "nodmodul",
+  "version": "0.0.1",
+  "description": "homwork test",
+  "license": "ISC",
+  "author": "varujan",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "devnode": "node -r dotenv/config server.js dotenv_config_path=./.env",
+    "devmoon": "nodemon -r dotenv/config server.js dotenv_config_path=./.env",
+    "prodnode": "node -r dotenv/config server.js dotenv_config_path=./.env.prod",
+    "prodmoon": "nodemon -r dotenv/config server.js dotenv_config_path=./.env.prod"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  },
+  "dependencies": {
+    "axios": "^1.15.0",
+    "dotenv": "^17.4.2",
+    "yarn": "^1.22.22"
+  }
+}
