@@ -1,2 +1,3 @@
 A edits line 1
 barev
+B changed line 1
