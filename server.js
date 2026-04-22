@@ -1,27 +1,30 @@
-import 'dotenv/config';
-import http from 'http';
-import axios from 'axios';
+import express from 'express';
+import 'dotenv/config'
 
+const app = express();
 
-import { initFile } from './utils/storage.js';
+const {PORT} = process.env;
 
+// const hendler1 =(req, res,next) => {
+//     console.log(`hendler1`)
+//     req.customData = 'mycustomData';
+//     next();
+// }
+//
+// const hendler2 =(req, res) => {
+//     console.log(`hendler2`)
+//     res.send(`hendler2 : ${req.customData}`);
+// }
 
-const{PORT, HOSTNAME, MODENAME} = process.env;
-
-
-const server = http.createServer(async (req, res) => {
- 
-
-    res.writeHead(404, { 'Content-Type': 'application/json' });
-    res.end('<h1>401</h1>');
+app.get('/users/:name/:id',(req, res) => {
+    res.json({
+        params: req.params,
+        query: req.query
+    });
 });
 
-async function startServer() {
-    const dataFileLIst = ['users.json', `posts.json`];
-    await initFile('data', dataFileLIst);
-    server.listen(+PORT, () => {
-        console.log(`Server is running on port ${PORT} in ${MODENAME} mode`);
-    });
-}
-startServer();
+// app.post('/data',hendler2);
 
+app.listen(+PORT,()=>{
+    console.log(`server started is ${PORT}`);
+})
